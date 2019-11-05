@@ -9,22 +9,42 @@
 
 using namespace std;
 
-enum CELL { CLEAR, WALL, PATH, VISITED };
+enum CELL {
+    CLEAR, WALL, PATH, VISITED
+};
 
+// Maze class
 class Maze {
-  friend ostream &operator<<(ostream &Out, const Maze &Maze);
+    // Friend overloaded insertion operator
+    friend ostream &operator<<(ostream &Out, const Maze &Maze);
+
 private:
-  const static int MAX_SIZE = 100;
-  char Field[MAX_SIZE][MAX_SIZE];
-  int Width, Height;
-  int ExitRow, ExitColumn;
+    // max maze size
+    const static int MAX_SIZE = 100;
+    // sets field
+    char Field[MAX_SIZE][MAX_SIZE];
+    // maze predetermined dimensions
+    int Width, Height;
+    // maze exit row/column
+    int ExitRow, ExitColumn;
 public:
-  explicit Maze(const string &FileName);
-  bool isClear(int Row, int Col) const;
-  void markAsPath(int Row, int Col);
-  void markAsVisited(int Row, int Col);
-  int getExitRow() const;
-  int getExitColumn() const;
+    // maze builder
+    explicit Maze(const string &FileName);
+
+    // checks if maze is clear
+    bool isClear(int Row, int Col) const;
+
+    // marks maze as path to take
+    void markAsPath(int Row, int Col);
+
+    // marks maze as visited point
+    void markAsVisited(int Row, int Col);
+
+    // get method for exit row
+    int getExitRow() const;
+
+    // get method for exit column
+    int getExitColumn() const;
 
 };
 

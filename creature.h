@@ -8,22 +8,39 @@
 #include "maze.h"
 #include <ostream>
 
+// creature class object for maze
 class Creature {
 public:
-  friend ostream &operator<<(ostream &Out, const Creature &Creature);
+    // overloaded insertion operator
+    friend ostream &operator<<(ostream &Out, const Creature &Creature);
 
+    // private creature variables
 private:
-  int Row;
-  int Col;
+    int Row;
+    int Col;
+    string Path;
 
 public:
-  Creature(int Row, int Col);
-  string solve(Maze &Maze);
-  bool atExit(const Maze &Maze) const;
-  string goNorth(Maze &Maze);
-  string goSouth(Maze &Maze);
-  string goEast(Maze &Maze);
-  string goWest(Maze &Maze);
+    // creature object constructor
+    Creature(int Row, int Col);
+
+    // string solution
+    string solve(Maze &Maze);
+
+    // boolean check for if creature is at maze exit
+    bool atExit(const Maze &Maze) const;
+
+    // moves creature north
+    bool goNorth(Maze &Maze);
+
+    // moves creature south
+    bool goSouth(Maze &Maze);
+
+    // moves creature east
+    bool goEast(Maze &Maze);
+
+    // moves creature west
+    bool goWest(Maze &Maze);
 };
 
 #endif //ASS3_CREATURE_H
